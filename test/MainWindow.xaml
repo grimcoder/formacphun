@@ -3,18 +3,16 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:test" 
+        xmlns:local="clr-namespace:test" KeyUp="MainWindow_OnKeyUp" KeyDown="MainWindow_OnKeyDown"
         mc:Ignorable="d" AllowDrop="True" Drop="UIElement_OnDrop"
-        Title="MainWindow" Height="350" Width="525">
+        Title="Picture Viewer" Height="350" Width="525">
     
-    <Window.InputBindings>
-        <KeyBinding Command="{Binding ChangeIdCommand}" Key="Escape"/>
-    </Window.InputBindings>
-    
+
     <Grid>
         <TextBox Text="{Binding vali}"></TextBox>
         <ScrollViewer>
-            <ItemsControl ItemsSource="{Binding SelectedImages}">
+            
+            <ItemsControl x:Name="ItemsControl" ItemsSource="{Binding SelectedImages}">
 
                 <ItemsControl.Template>
                     <ControlTemplate>
@@ -29,16 +27,21 @@
 
                         <Grid Margin="15">
 
-                            <Image MouseLeftButtonDown="UIElement_OnMouseLeftButtonDown" Width="200" Source="{Binding }" />
+                            <Image MouseLeftButtonDown="UIElement_OnMouseLeftButtonDown" 
+                                   Width="200" Source="{Binding }" />
                         
                         </Grid>
                         
                     </DataTemplate>
                 </ItemsControl.ItemTemplate>
             </ItemsControl>
+            
+            
         </ScrollViewer>
-        <Border x:Name="ImageBorder" Visibility="Hidden">
-            <Image x:Name="Image"></Image>
+        <Border  x:Name="ImageBorder" Background="White" Visibility="Hidden">
+            <Grid>
+                <Image ToolTip="To apply blur hold B button." x:Name="Image"></Image>
+            </Grid>
         </Border>
     </Grid>
 </Window>

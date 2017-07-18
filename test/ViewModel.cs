@@ -1,12 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
-using System.Linq;
 using System.Runtime.CompilerServices;
-using System.Security.Policy;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Input;
 using test.Annotations;
 
@@ -25,13 +20,8 @@ namespace test
         public ViewModel()
         {
             SelectedImages = new ObservableCollection<string>();
-
-            CloseFullScreenCommand = new Command(() => { }, () => true);
         }
 
-        private ICommand CloseFullScreenCommand { get; set; } 
-
-        
         public ObservableCollection<string> SelectedImages { get; set; }
     }
 
@@ -43,7 +33,6 @@ namespace test
             this.ExecuteCommand = execute;
             this.CanExecuteCommand = canExecute;
         }
-
 
 
         public Func<bool> CanExecuteCommand { get; set; }
